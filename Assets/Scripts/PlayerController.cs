@@ -5,26 +5,27 @@ public class PlayerController : MonoBehaviour {
     #region Variables
     // FIELDS //
     BoxCollider myCollider;
+    bool canBeHit = true;
+
+    [SerializeField] float hitDelay = 0.2f;
+    float hitDelayTimePassed = 0f;
 
     // PUBLIC PROPERTIES //
-    [SerializeField]
-    float hitPoints
+    private float hitPoints;
+
+    public float HitPoints
     {
-        get
-        {
-            return hitPoints;
-        }
+        get { return hitPoints; }
         set
         {
             hitPoints = value;
-            if(hitPoints<0)
+            if (hitPoints < 0f)
             {
                 hitPoints = 0;
                 GameController.GameOver();
             }
         }
     }
-
 
     // PRIVATE PROPERTIES //
 
@@ -34,21 +35,31 @@ public class PlayerController : MonoBehaviour {
     void Awake () 
 	{
 		myCollider = GetComponent<BoxCollider>();
-
+        HitPoints = 100f;
 	}
 	
 	void Update () 
 	{
-		
-	}
+        if(hitDelayTimePassed>hitDelay)
+        {
+            canBeHit = true;
+        }
+        else
+        {
+            hitDelayTimePassed += Time.deltaTime;
+        }
+    }
 
 	private void OnTriggerStay(Collider other)
 	{
-		if(other.GetComponent<Enemy>())
+		if(other.GetComponent<Enemy>() && canBeHit)
 		{
+            print("Ouch!");
             Enemy tmpEnemy = other.GetComponent<Enemy>();
-            hitPoints -= tmpEnemy.DPS;
-		}
+            HitPoints -= tmpEnemy.DPS;
+            canBeHit = false;
+            hitDelayTimePassed = 0f;
+        }
 	}
 	#endregion
 

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33363512640422122}
   - component: {fileID: 65938547827674576}
   - component: {fileID: 23960412195317048}
+  - component: {fileID: 65696800451179136}
   - component: {fileID: 54683242050772726}
   - component: {fileID: 195832242374224134}
   - component: {fileID: 114022816297358506}
@@ -100,6 +101,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65696800451179136
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1583019671843026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65938547827674576
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -137,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f862905f6ca1f9d42aa84c0cb6b60f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ground: {fileID: 0}
 --- !u!195 &195832242374224134
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -146,13 +160,13 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 100
+  m_Acceleration: 100
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 1000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0.5

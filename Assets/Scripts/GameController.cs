@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 
 public class GameController : MonoBehaviour {
-	
-	#region Variables
-	// FIELDS //
+
+    #region Variables
+    // FIELDS //
 
 
-	// PUBLIC PROPERTIES //
+    // PUBLIC PROPERTIES //
+    private static int score = 0;
 	public static int Score
 	{
-		get { return Score; }
-		set {
-			Score = value;
-			//UIController.updatescoretext();
-			}
+		get { return score; }
+		set
+        {
+            score = value;
+            //UIController.updatescoretext();
+        }
 	}
 
 	// PRIVATE PROPERTIES //

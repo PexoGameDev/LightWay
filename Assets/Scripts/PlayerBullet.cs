@@ -6,15 +6,23 @@ public class PlayerBullet : MonoBehaviour {
 	// FIELDS //
 	[SerializeField] float bulletSpeed = 1f;
 	[SerializeField] float timeOfLife = 5f;
-	// PUBLIC PROPERTIES //
+    // PUBLIC PROPERTIES //
 	public Vector3 DirectionOfShot { get; set; }
+    private float damage = 10f;
 
-	// PRIVATE PROPERTIES //
+    public float Damage
+    {
+        get { return damage; }
+        set { damage = value; }
+    }
 
-	#endregion
 
-	#region Unity Methods
-	void Start () 
+    // PRIVATE PROPERTIES //
+
+    #endregion
+
+    #region Unity Methods
+    void Start () 
 	{
 		Destroy(gameObject, timeOfLife);
 	}
@@ -27,6 +35,11 @@ public class PlayerBullet : MonoBehaviour {
 
 	#region Public Methods
 	// PUBLIC METHODS //
+    public void Hit()
+    {
+        //instantiate particles
+        Destroy(gameObject);
+    }
 	#endregion
 
 	#region Private Methods

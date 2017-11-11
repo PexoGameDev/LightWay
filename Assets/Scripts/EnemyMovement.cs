@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour {
 
     #region Variables
     // FIELDS //
-    [SerializeField] float targetDelay = 0.2f;
+    [SerializeField] float targetDelay = 0.1f;
 
     GameObject player;
     NavMeshAgent navMeshAgent;
@@ -29,19 +29,22 @@ public class EnemyMovement : MonoBehaviour {
 	{
 		
 	}
-	#endregion
+    #endregion
 
-	#region Public Methods
-	// PUBLIC METHODS //
+    #region Public Methods
+    // PUBLIC METHODS //
 
-	#endregion
+    #endregion
 
-	#region Private Methods
-	// PRIVATE METHODS //
+    #region Private Methods
+    // PRIVATE METHODS //
     IEnumerator TargetPlayer()
     {
-        navMeshAgent.SetDestination(player.transform.position);
-        yield return new WaitForSeconds(targetDelay);
+        for (; ; )
+        {
+            navMeshAgent.SetDestination(player.transform.position);
+            yield return new WaitForSeconds(targetDelay);
+        }
     }
 	#endregion
 }
