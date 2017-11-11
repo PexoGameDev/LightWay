@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4508400308114212}
   - component: {fileID: 198420642781154840}
   - component: {fileID: 199764692401841798}
-  - component: {fileID: 114187405384762538}
   m_Layer: 0
   m_Name: paricle simple shot
   m_TagString: Untagged
@@ -42,17 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114187405384762538
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1760308769614208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bfa293fe13d66a49bd31dc5daa3225c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &198420642781154840
 ParticleSystem:
   m_ObjectHideFlags: 1

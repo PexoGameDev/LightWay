@@ -29,9 +29,9 @@ MonoBehaviour:
     m_Settings:
       excludeSkybox: 1
   antialiasing:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
-      method: 0
+      method: 1
       fxaaSettings:
         preset: 2
       taaSettings:
@@ -95,7 +95,7 @@ MonoBehaviour:
       speedUp: 2
       speedDown: 1
       logMin: -8
-      logMax: 4
+      logMax: 5
   bloom:
     m_Enabled: 1
     m_Settings:
@@ -120,8 +120,8 @@ MonoBehaviour:
         neutralWhiteLevel: 6.7
         neutralWhiteClip: 10
       basic:
-        postExposure: 0
-        temperature: -5
+        postExposure: 0.48
+        temperature: -24
         tint: -1
         hueShift: 0
         saturation: 1.38
@@ -293,13 +293,13 @@ MonoBehaviour:
       size: 1
       luminanceContribution: 0.8
   vignette:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.45
-      smoothness: 0.2
+      intensity: 0.202
+      smoothness: 0.652
       roundness: 1
       mask: {fileID: 0}
       opacity: 1
