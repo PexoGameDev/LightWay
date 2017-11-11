@@ -8,7 +8,7 @@ public class PlayerShooting : MonoBehaviour {
 	float           weaponCooldownTimePassed = 0f;
 
 	[SerializeField] GameObject playerBulletPrefab;
-	[SerializeField] float      weaponCooldown = 0.3f;
+	float      weaponCooldown = 0.1f;
 
 	// PUBLIC PROPERTIES //
 

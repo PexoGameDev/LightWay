@@ -4,12 +4,12 @@ public class PlayerBullet : MonoBehaviour {
 
 	#region Variables
 	// FIELDS //
-	[SerializeField] float bulletSpeed = 1f;
-	[SerializeField] float timeOfLife = 5f;
+	float bulletSpeed = 2f;
+	[SerializeField] float timeOfLife = 3f;
     // PUBLIC PROPERTIES //
 	public Vector3 DirectionOfShot { get; set; }
-    private float damage = 10f;
-
+    private float damage = 2f;
+    [SerializeField] public GameObject BulletParticle;
     public float Damage
     {
         get { return damage; }
@@ -38,6 +38,7 @@ public class PlayerBullet : MonoBehaviour {
     public void Hit()
     {
         //instantiate particles
+        Instantiate(BulletParticle,transform.position,Quaternion.identity);
         Destroy(gameObject);
     }
 	#endregion
