@@ -51,6 +51,13 @@ public class Enemy : MonoBehaviour {
             HitPoints -= tmpBullet.Damage;
             tmpBullet.Hit();
         }
+
+        if (other.gameObject.tag == "Explosive")
+        {
+            Explosive explosive = other.gameObject.GetComponent(typeof(Explosive)) as Explosive;
+            HitPoints -= explosive.damage;
+            Destroy(other.gameObject);
+        }
     }
     #endregion
 
