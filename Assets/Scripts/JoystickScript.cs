@@ -8,10 +8,9 @@ public class JoystickScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     // FIELDS //
     [SerializeField] GameObject joystick;
     [SerializeField] GameObject joystickPivot;
-    BoxCollider2D               myCollider;
-    PlayerShooting              playerShootingScript;
-    bool                        isShooting = false;
-    Vector2                     joystickPivotOrigin;
+    PlayerShooting playerShootingScript;
+    Vector2 joystickPivotOrigin;
+    bool isShooting = false;
     // PUBLIC PROPERTIES //
     public Vector3 ShootingAngle { get; private set; }
 
@@ -23,7 +22,6 @@ public class JoystickScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     #region Unity Methods
     void Awake()
     {
-        myCollider = GetComponent<BoxCollider2D>();
         playerShootingScript = FindObjectOfType<PlayerShooting>();
         joystickPivotOrigin = new Vector2(joystickPivot.transform.position.x, joystickPivot.transform.position.y);
     }

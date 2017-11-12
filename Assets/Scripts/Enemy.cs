@@ -4,7 +4,6 @@ public class Enemy : MonoBehaviour {
 	#region Variables
 	// FIELDS //
 	int scoreValue = 100;
-    BoxCollider myCollider;
 
     // PUBLIC PROPERTIES //
     public float DPS { get; private set; }
@@ -31,7 +30,7 @@ public class Enemy : MonoBehaviour {
     #region Unity Methods
     void Awake()
     {
-        myCollider = GetComponent<BoxCollider>();
+
     }
     void Start () 
 	{

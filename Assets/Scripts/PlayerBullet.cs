@@ -4,21 +4,19 @@ public class PlayerBullet : MonoBehaviour {
 
 	#region Variables
 	// FIELDS //
-	float bulletSpeed = 2f;
+    [SerializeField] GameObject BulletParticle;
 	[SerializeField] float timeOfLife = 3f;
+	float bulletSpeed = 2f;
+    float damage = 2f;
+
     // PUBLIC PROPERTIES //
-	public Vector3 DirectionOfShot { get; set; }
-    private float damage = 2f;
-    [SerializeField] public GameObject BulletParticle;
+    public Vector3 DirectionOfShot { get; set; }
     public float Damage
     {
         get { return damage; }
         set { damage = value; }
     }
-
-
     // PRIVATE PROPERTIES //
-
     #endregion
 
     #region Unity Methods
@@ -31,10 +29,15 @@ public class PlayerBullet : MonoBehaviour {
 	{
 		transform.position += DirectionOfShot * bulletSpeed;
 	}
-	#endregion
+    #endregion
 
-	#region Public Methods
-	// PUBLIC METHODS //
+    private void OnTriggerEnter(Collider other)
+    {
+        Hit();
+    }
+
+    #region Public Methods
+    // PUBLIC METHODS //
     public void Hit()
     {
         //instantiate particles
