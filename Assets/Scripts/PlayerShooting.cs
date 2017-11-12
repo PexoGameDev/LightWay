@@ -20,7 +20,7 @@ public class PlayerShooting : MonoBehaviour {
     #region Unity Methods
     void Start () 
 	{
-        chosenWeapon = WeaponController.ProjectileGunWeapon;
+        chosenWeapon = WeaponController.MineWeapon;
 	}
 	
 	void Update () 

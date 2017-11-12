@@ -5,12 +5,17 @@ public class ProjectileGun : Weapon{
     #region Variables
     // FIELDS //
     GameObject projectilePrefab;
-    float weaponCooldown = 0.1f;
+    float weaponCooldown = 0.3f;
 
     public GameObject ProjectilePrefab
     {
         private get { return projectilePrefab; }
         set { projectilePrefab = value; }
+    }
+    public override float WeaponCooldown
+    {
+        get { return weaponCooldown; }
+        set { weaponCooldown = value; }
     }
     // PRIVATE PROPERTIES //
     #endregion

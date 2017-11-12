@@ -4,15 +4,17 @@ public class MineWeapon : Weapon {
 
     #region Variables
     // FIELDS //
-    int ammoCount = 1;
+    int ammoCount = 5;
     float weaponCooldown = 1f;
 
     // PUBLIC PROPERTIES //
     public GameObject MinePrefab { get; set; }
-    new public int AmmoCount
+
+    public override int AmmoCount
     {
         get { return ammoCount; }
-        private set
+
+        set
         {
             ammoCount = value;
             if (ammoCount <= 0)
@@ -21,6 +23,12 @@ public class MineWeapon : Weapon {
                 print("Out of ammo in" + name + "!");
             }
         }
+    }
+
+    public override float WeaponCooldown
+    {
+        get { return weaponCooldown; }
+        set { weaponCooldown = value; }
     }
     // PRIVATE PROPERTIES //
 

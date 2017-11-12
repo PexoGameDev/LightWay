@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Weapon : MonoBehaviour {
+public abstract class Weapon : MonoBehaviour {
 
     #region Variables
     // FIELDS //
@@ -8,16 +8,16 @@ public class Weapon : MonoBehaviour {
     int ammoCount = 1;
 
     // PUBLIC PROPERTIES //
-    public float WeaponCooldown
+    public virtual float WeaponCooldown
     {
         get { return weaponCooldown; }
-        private set { weaponCooldown = value; }
+        set { weaponCooldown = value; }
     }
 
-    public int AmmoCount
+    public virtual int AmmoCount
     {
         get { return ammoCount; }
-        private set { ammoCount = value; }
+        set { ammoCount = value; }
     }
     #endregion
 
