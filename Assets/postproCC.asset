@@ -40,7 +40,7 @@ MonoBehaviour:
         stationaryBlending: 0.95
         motionBlending: 0.85
   ambientOcclusion:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       intensity: 2.07
       radius: 0.3
@@ -55,7 +55,7 @@ MonoBehaviour:
       reflection:
         blendType: 0
         reflectionQuality: 2
-        maxDistance: 100
+        maxDistance: 102
         iterationCount: 256
         stepSize: 3
         widthModifier: 0.5
@@ -79,9 +79,9 @@ MonoBehaviour:
   motionBlur:
     m_Enabled: 0
     m_Settings:
-      shutterAngle: 270
-      sampleCount: 10
-      frameBlending: 0
+      shutterAngle: 84
+      sampleCount: 8
+      frameBlending: 1
   eyeAdaptation:
     m_Enabled: 0
     m_Settings:
@@ -102,7 +102,7 @@ MonoBehaviour:
       bloom:
         intensity: 3.31
         threshold: 1
-        softKnee: 0.719
+        softKnee: 0.829
         radius: 4.31
         antiFlicker: 0
       lensDirt:
@@ -149,14 +149,14 @@ MonoBehaviour:
             - serializedVersion: 2
               time: 0
               value: 0
-              inSlope: 1
-              outSlope: 1
+              inSlope: 0.26633984
+              outSlope: 0.26633984
               tangentMode: 0
             - serializedVersion: 2
               time: 1
               value: 1
-              inSlope: 1
-              outSlope: 1
+              inSlope: 0.39950976
+              outSlope: 0.39950976
               tangentMode: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
