@@ -4,10 +4,8 @@ public class GameController : MonoBehaviour {
 
     #region Variables
     // FIELDS //
-
-
+    static int score = 0;
     // PUBLIC PROPERTIES //
-    private static int score = 0;
 	public static int Score
 	{
 		get { return score; }
@@ -25,7 +23,7 @@ public class GameController : MonoBehaviour {
 	#region Unity Methods
 	void Start () 
 	{
-		
+
 	}
 	
 	void Update () 

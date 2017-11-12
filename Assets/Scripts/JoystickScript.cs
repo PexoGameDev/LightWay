@@ -8,15 +8,15 @@ public class JoystickScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     // FIELDS //
     [SerializeField] GameObject joystick;
     [SerializeField] GameObject joystickPivot;
+
     PlayerShooting playerShootingScript;
     Vector2 joystickPivotOrigin;
+    Vector3 joystickAngle;
+
     bool isShooting = false;
     // PUBLIC PROPERTIES //
-    public Vector3 ShootingAngle { get; private set; }
-
-
+    public static Vector3 ShootingAngle { get; private set; }
     // PRIVATE PROPERTIES //
-
     #endregion
 
     #region Unity Methods
@@ -24,19 +24,20 @@ public class JoystickScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     {
         playerShootingScript = FindObjectOfType<PlayerShooting>();
         joystickPivotOrigin = new Vector2(joystickPivot.transform.position.x, joystickPivot.transform.position.y);
+        ShootingAngle = Vector3.forward;
     }
 
     void Update()
     {
         if(isShooting)
         {
-            playerShootingScript.Shoot(new Vector3(-ShootingAngle.x, 0, -ShootingAngle.y));
-            joystick.transform.position = joystickPivot.transform.position + ShootingAngle * 100;
+            playerShootingScript.Shoot();
+            joystick.transform.position = joystickPivot.transform.position + joystickAngle * 100;
         }
     }
     public void OnDrag(PointerEventData pointerEventData)
     {
-        ShootingAngle = (pointerEventData.position - joystickPivotOrigin).normalized;
+        SetShootingAngle(pointerEventData);
     }
 
     public void OnPointerUp(PointerEventData pointerEventData)
@@ -47,8 +48,8 @@ public class JoystickScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
+        SetShootingAngle(pointerEventData);
         isShooting = true;
-        ShootingAngle = (pointerEventData.position - joystickPivotOrigin).normalized;
     }
     #endregion
 
@@ -58,6 +59,10 @@ public class JoystickScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     #region Private Methods
     // PRIVATE METHODS //
-
+    void SetShootingAngle(PointerEventData pointerEventData)
+    {
+        joystickAngle = (pointerEventData.position - joystickPivotOrigin).normalized;
+        ShootingAngle = new Vector3(-joystickAngle.x, 0, -joystickAngle.y);
+    }
     #endregion
 }

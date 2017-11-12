@@ -4,10 +4,12 @@ public class PlayerShooting : MonoBehaviour {
 
 	#region Variables
 	// FIELDS //
-	float weaponCooldownTimePassed = 0f;
-
 	[SerializeField] GameObject playerBulletPrefab;
-	float weaponCooldown = 0.1f;
+    [SerializeField] Weapon chosenWeapon;
+
+    Weapon[] weaponsList; //Array of all aviable weapons to choose || WeaponController is going to handle this after second thought.
+
+	float weaponCooldownTimePassed = 0f;
     // PUBLIC PROPERTIES //
 
 
@@ -18,12 +20,12 @@ public class PlayerShooting : MonoBehaviour {
     #region Unity Methods
     void Start () 
 	{
-
+        chosenWeapon = WeaponController.ProjectileGunWeapon;
 	}
 	
 	void Update () 
 	{
-		if(weaponCooldownTimePassed<weaponCooldown)
+		if(weaponCooldownTimePassed< chosenWeapon.WeaponCooldown)
 		{
 			weaponCooldownTimePassed += Time.deltaTime;
 		}
@@ -32,18 +34,17 @@ public class PlayerShooting : MonoBehaviour {
 
 	#region Public Methods
 	// PUBLIC METHODS //
-	public void Shoot(Vector3 direction)
+	public void Shoot()
 	{
-		if (weaponCooldownTimePassed > weaponCooldown)
+		if (weaponCooldownTimePassed > chosenWeapon.WeaponCooldown)
 		{
-			Instantiate(playerBulletPrefab, transform.position + 3*direction, Quaternion.identity).GetComponent<PlayerBullet>().DirectionOfShot = direction;
-			weaponCooldownTimePassed = 0f;
-		}
-	}
+            chosenWeapon.Shoot();
+            weaponCooldownTimePassed = 0f;
+        }
+    }
 	#endregion
 
 	#region Private Methods
 	// PRIVATE METHODS //
-
 	#endregion
 }

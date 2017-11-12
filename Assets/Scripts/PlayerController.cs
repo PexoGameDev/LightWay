@@ -9,9 +9,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float hitDelay = 0.2f;
     float hitDelayTimePassed = 0f;
 
+    float hitPoints;
     // PUBLIC PROPERTIES //
-    private float hitPoints;
-
+    public static GameObject Player { get; private set; }
     public float HitPoints
     {
         get { return hitPoints; }
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
     #region Unity Methods
     void Awake () 
 	{
+        Player = gameObject;
         HitPoints = 100f;
 	}
 	
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		if(other.GetComponent<Enemy>() && canBeHit)
 		{
-            print("Ouch!");
+            print("Ouch! I'm hit!");
             Enemy tmpEnemy = other.GetComponent<Enemy>();
             HitPoints -= tmpEnemy.DPS;
             canBeHit = false;
