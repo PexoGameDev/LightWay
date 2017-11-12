@@ -4,7 +4,6 @@ public class PlayerController : MonoBehaviour {
 
     #region Variables
     // FIELDS //
-    BoxCollider myCollider;
     bool canBeHit = true;
 
     [SerializeField] float hitDelay = 0.2f;
@@ -34,7 +33,6 @@ public class PlayerController : MonoBehaviour {
     #region Unity Methods
     void Awake () 
 	{
-		myCollider = GetComponent<BoxCollider>();
         HitPoints = 100f;
 	}
 	

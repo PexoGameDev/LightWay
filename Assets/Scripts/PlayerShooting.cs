@@ -4,23 +4,21 @@ public class PlayerShooting : MonoBehaviour {
 
 	#region Variables
 	// FIELDS //
-	JoystickScript  joystick;
-	float           weaponCooldownTimePassed = 0f;
+	float weaponCooldownTimePassed = 0f;
 
 	[SerializeField] GameObject playerBulletPrefab;
-	float      weaponCooldown = 0.1f;
+	float weaponCooldown = 0.1f;
+    // PUBLIC PROPERTIES //
 
-	// PUBLIC PROPERTIES //
 
+    // PRIVATE PROPERTIES //
 
-	// PRIVATE PROPERTIES //
+    #endregion
 
-	#endregion
-
-	#region Unity Methods
-	void Start () 
+    #region Unity Methods
+    void Start () 
 	{
-		joystick = FindObjectOfType<JoystickScript>();
+
 	}
 	
 	void Update () 
@@ -38,7 +36,7 @@ public class PlayerShooting : MonoBehaviour {
 	{
 		if (weaponCooldownTimePassed > weaponCooldown)
 		{
-			Instantiate(playerBulletPrefab, transform.position, Quaternion.identity).GetComponent<PlayerBullet>().DirectionOfShot = direction;
+			Instantiate(playerBulletPrefab, transform.position + 3*direction, Quaternion.identity).GetComponent<PlayerBullet>().DirectionOfShot = direction;
 			weaponCooldownTimePassed = 0f;
 		}
 	}
