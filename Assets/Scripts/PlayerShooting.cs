@@ -5,12 +5,19 @@ public class PlayerShooting : MonoBehaviour {
 	#region Variables
 	// FIELDS //
 	[SerializeField] GameObject playerBulletPrefab;
-    [SerializeField] Weapon chosenWeapon;
-
-    Weapon[] weaponsList; //Array of all aviable weapons to choose || WeaponController is going to handle this after second thought.
+    static Weapon chosenWeapon;
 
 	float weaponCooldownTimePassed = 0f;
     // PUBLIC PROPERTIES //
+    public static Weapon ChosenWeapon
+    {
+        get { return chosenWeapon; }
+        set
+        {
+            chosenWeapon = value;
+            //UpdateUI, show chosen weapon and ammo.
+        }
+    }
 
 
     // PRIVATE PROPERTIES //

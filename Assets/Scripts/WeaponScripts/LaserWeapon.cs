@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
 
-public class GranadeWeapon : Weapon {
-
+public class LaserWeapon : Weapon {
     #region Variables
     // FIELDS //
-    [SerializeField] [Range(0.01f,0.9f)] float slope = 0.3f;
-    [SerializeField] GameObject granadePrefab;
+    [SerializeField] LineRenderer laserPrefab;
     public int ammoCount = 99; //It's public only because [SerializeField] returns some weird error
     public float weaponCooldown = 1f; //It's public only because [SerializeField] returns some weird error
     // PUBLIC PROPERTIES //
-    public GameObject GranadePrefab
+    public LineRenderer LaserPrefab
     {
-        get { return granadePrefab; }
-        set { granadePrefab = value; }
+        get { return laserPrefab; }
+        set { laserPrefab = value; }
     }
 
     public override int AmmoCount
@@ -45,9 +43,14 @@ public class GranadeWeapon : Weapon {
     {
         if (AmmoCount > 0)
         {
-            GranadeScript tmpGranade = Instantiate(GranadePrefab, PlayerController.Player.transform.position + Vector3.up*4, Quaternion.identity).GetComponent<GranadeScript>();
-            tmpGranade.Force = new Vector3(JoystickScript.ShootingAngle.x, slope, JoystickScript.ShootingAngle.z) * 50;
-            tmpGranade.StartMovement();
+            LineRenderer tmpLaser = new GameObject("Laser").AddComponent<LineRenderer>();//Instantiate(LaserPrefab, PlayerController.Player.transform.position + JoystickScript.ShootingAngle*3, Quaternion.identity);
+
+            tmpLaser.startColor = Color.cyan;
+            tmpLaser.endColor = Color.green;
+
+            tmpLaser.SetPosition(0, PlayerController.Player.transform.position + JoystickScript.ShootingAngle * 3);
+            tmpLaser.SetPosition(1, PlayerController.Player.transform.position + JoystickScript.ShootingAngle * 30);
+
             AmmoCount--;
         }
         else

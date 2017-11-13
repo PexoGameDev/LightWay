@@ -4,11 +4,16 @@ public class MineWeapon : Weapon {
 
     #region Variables
     // FIELDS //
-    int ammoCount = 99;
-    float weaponCooldown = 1f;
+    [SerializeField] GameObject minePrefab;
+    public int ammoCount = 99; //It's public only because [SerializeField] returns some weird error
+    public float weaponCooldown = 1f; //It's public only because [SerializeField] returns some weird error
 
     // PUBLIC PROPERTIES //
-    public GameObject MinePrefab { get; set; }
+    public GameObject MinePrefab
+    {
+        get { return minePrefab; }
+        set { minePrefab = value; }
+    }
 
     public override int AmmoCount
     {
