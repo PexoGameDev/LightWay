@@ -5,12 +5,14 @@ public class WeaponController : MonoBehaviour {
 	#region Variables
 	// FIELDS //
     [SerializeField] GameObject projectileGunProjectilePrefab;
+    [SerializeField] GameObject granadePrefab;
     [SerializeField] GameObject minePrefab;
 
 
     // PUBLIC PROPERTIES //
     public static ProjectileGun ProjectileGunWeapon { get; private set; }
     public static MineWeapon MineWeapon { get; private set; }
+    public static GranadeWeapon GranadeWeapon { get; private set; }
 
     // PRIVATE PROPERTIES //
 
@@ -24,6 +26,9 @@ public class WeaponController : MonoBehaviour {
 
         MineWeapon = gameObject.AddComponent<MineWeapon>();
         MineWeapon.MinePrefab = minePrefab;
+
+        GranadeWeapon = gameObject.AddComponent<GranadeWeapon>();
+        GranadeWeapon.GranadePrefab = granadePrefab;
     }
 	#endregion
 

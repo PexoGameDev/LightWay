@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour {
 
     #region Variables
     // FIELDS //
-    [SerializeField] GameObject ground;
     NavMeshAgent navMeshAgent;
     RaycastHit rayHit;
     Ray raycast;
@@ -29,7 +28,7 @@ public class PlayerMovement : MonoBehaviour {
             raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(raycast, out rayHit))
             {
-                if (rayHit.collider.gameObject == ground)
+                if (rayHit.collider.gameObject == GameController.Ground)
                 {
                     navMeshAgent.SetDestination(rayHit.point);
                 }

@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 
-public class MineWeapon : Weapon {
+public class GranadeWeapon : Weapon {
 
     #region Variables
     // FIELDS //
+    [Range(0.01f,0.9f)] float slope = 0.3f;
+
     int ammoCount = 99;
     float weaponCooldown = 1f;
-
     // PUBLIC PROPERTIES //
-    public GameObject MinePrefab { get; set; }
+    public GameObject GranadePrefab { get; set; }
 
     public override int AmmoCount
     {
@@ -40,7 +41,9 @@ public class MineWeapon : Weapon {
     {
         if (AmmoCount > 0)
         {
-            Instantiate(MinePrefab, PlayerController.Player.transform.position, Quaternion.identity);
+            GranadeScript tmpGranade = Instantiate(GranadePrefab, PlayerController.Player.transform.position + Vector3.up*4, Quaternion.identity).GetComponent<GranadeScript>();
+            tmpGranade.Force = new Vector3(JoystickScript.ShootingAngle.x, slope, JoystickScript.ShootingAngle.z) * 50;
+            tmpGranade.StartMovement();
             AmmoCount--;
         }
         else

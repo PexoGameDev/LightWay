@@ -4,9 +4,10 @@ public class GameController : MonoBehaviour {
 
     #region Variables
     // FIELDS //
+    [SerializeField] GameObject ground;
     static int score = 0;
     // PUBLIC PROPERTIES //
-	public static int Score
+    public static int Score
 	{
 		get { return score; }
 		set
@@ -15,7 +16,7 @@ public class GameController : MonoBehaviour {
             //UIController.updatescoretext();
         }
 	}
-
+    public static GameObject Ground { get; set; }
 	// PRIVATE PROPERTIES //
 	
 	#endregion
@@ -28,7 +29,7 @@ public class GameController : MonoBehaviour {
 	
 	void Update () 
 	{
-		
+        Ground = ground;
 	}
 	#endregion
 
