@@ -5,8 +5,8 @@ public class GranadeScript : MonoBehaviour {
     #region Variables
     // FIELDS //
     [SerializeField] GameObject explosionParticles;
-    float explosionRadius = 5f;
-    int damage = 100;
+    float explosionRadius = 10f;
+    int damage = 20;
     Rigidbody myRb;
     // PUBLIC PROPERTIES //
     public float ExplosionRadius
