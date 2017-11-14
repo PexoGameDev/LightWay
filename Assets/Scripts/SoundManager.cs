@@ -32,13 +32,6 @@ public class SoundManager : MonoBehaviour {
 
     public Sound[] soundList;
 
-
-
-    private void Start()
-    {
-        PlaySound("Sho 2");
-    }
-
     public void PlaySound (string name)
     {
         foreach(Sound sound in soundList)
