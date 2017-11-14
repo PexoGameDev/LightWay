@@ -100,14 +100,14 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 3.31
-        threshold: 1
-        softKnee: 0.829
-        radius: 4.31
+        intensity: 8.36
+        threshold: 0.89
+        softKnee: 0.674
+        radius: 4.35
         antiFlicker: 0
       lensDirt:
         texture: {fileID: 0}
-        intensity: 3
+        intensity: 2.86
   colorGrading:
     m_Enabled: 1
     m_Settings:
@@ -121,13 +121,13 @@ MonoBehaviour:
         neutralWhiteClip: 10
       basic:
         postExposure: 0.48
-        temperature: -24
-        tint: -1
+        temperature: -36
+        tint: 0
         hueShift: 0
         saturation: 1.38
         contrast: 1
       channelMixer:
-        red: {x: 0.93, y: 0, z: 0}
+        red: {x: 0.67, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
         blue: {x: 0, y: 0, z: 1}
         currentEditingChannel: 0
@@ -149,14 +149,14 @@ MonoBehaviour:
             - serializedVersion: 2
               time: 0
               value: 0
-              inSlope: 0.26633984
-              outSlope: 0.26633984
+              inSlope: 0.27343282
+              outSlope: 0.27343282
               tangentMode: 0
             - serializedVersion: 2
               time: 1
               value: 1
-              inSlope: 0.39950976
-              outSlope: 0.39950976
+              inSlope: 0.0839957
+              outSlope: 0.0839957
               tangentMode: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
