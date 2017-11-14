@@ -6,6 +6,10 @@ public class LaserWeapon : Weapon {
     [SerializeField] LineRenderer laserPrefab;
     public int ammoCount = 99; //It's public only because [SerializeField] returns some weird error
     public float weaponCooldown = 1f; //It's public only because [SerializeField] returns some weird error
+    Ray laserRaycast;
+    RaycastHit laserRaycastHit;
+    int raycastLayer = 8;
+
     // PUBLIC PROPERTIES //
     public LineRenderer LaserPrefab
     {
@@ -34,7 +38,6 @@ public class LaserWeapon : Weapon {
         set { weaponCooldown = value; }
     }
     // PRIVATE PROPERTIES //
-
     #endregion
 
     #region Public Methods
@@ -43,15 +46,21 @@ public class LaserWeapon : Weapon {
     {
         if (AmmoCount > 0)
         {
-            LineRenderer tmpLaser = new GameObject("Laser").AddComponent<LineRenderer>();//Instantiate(LaserPrefab, PlayerController.Player.transform.position + JoystickScript.ShootingAngle*3, Quaternion.identity);
+            print(Physics.Raycast(PlayerController.Player.transform.position, JoystickScript.ShootingAngle, out laserRaycastHit, 1000f, raycastLayer));
+            if (Physics.Raycast(PlayerController.Player.transform.position, JoystickScript.ShootingAngle, out laserRaycastHit, 1000f, raycastLayer))
+            {
+                print(laserRaycastHit.point);
 
-            tmpLaser.startColor = Color.cyan;
-            tmpLaser.endColor = Color.green;
+                LineRenderer tmpLaser = new GameObject("Laser").AddComponent<LineRenderer>(); //Instantiate(LaserPrefab, PlayerController.Player.transform.position + JoystickScript.ShootingAngle*3, Quaternion.identity);
 
-            tmpLaser.SetPosition(0, PlayerController.Player.transform.position + JoystickScript.ShootingAngle * 3);
-            tmpLaser.SetPosition(1, PlayerController.Player.transform.position + JoystickScript.ShootingAngle * 30);
+                tmpLaser.startColor = Color.cyan;
+                tmpLaser.endColor = Color.green;
 
-            AmmoCount--;
+                tmpLaser.SetPosition(0, PlayerController.Player.transform.position + JoystickScript.ShootingAngle * 3);
+                tmpLaser.SetPosition(1, laserRaycastHit.point);
+                AmmoCount--;
+            }
+
         }
         else
         {

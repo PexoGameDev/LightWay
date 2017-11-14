@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23377066145228526}
   - component: {fileID: 114425114137246780}
   - component: {fileID: 54928104887737882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4948379412543204}
   - component: {fileID: 108319119983544710}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

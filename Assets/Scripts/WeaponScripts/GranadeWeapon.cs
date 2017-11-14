@@ -8,6 +8,9 @@ public class GranadeWeapon : Weapon {
     [SerializeField] GameObject granadePrefab;
     public int ammoCount = 99; //It's public only because [SerializeField] returns some weird error
     public float weaponCooldown = 1f; //It's public only because [SerializeField] returns some weird error
+    [SerializeField] float GranadeMass;
+    [SerializeField] float GranadeDrag;
+    [SerializeField] float GranadeAngularDrag;
     // PUBLIC PROPERTIES //
     public GameObject GranadePrefab
     {
@@ -38,7 +41,13 @@ public class GranadeWeapon : Weapon {
     // PRIVATE PROPERTIES //
 
     #endregion
-
+    void Start()
+    {
+        Rigidbody granadeRb = GranadePrefab.GetComponent<Rigidbody>();
+        granadeRb.drag = GranadeDrag;
+        granadeRb.angularDrag = GranadeAngularDrag;
+        granadeRb.mass = GranadeMass;
+    }
     #region Public Methods
     // PUBLIC METHODS //
     public override void Shoot()

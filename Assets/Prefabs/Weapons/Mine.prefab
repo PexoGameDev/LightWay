@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23999211134655578}
   - component: {fileID: 135115167435020500}
   - component: {fileID: 114083521157114110}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mine
   m_TagString: Explosive
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4512820827648978}
   - component: {fileID: 198385959302985502}
   - component: {fileID: 199036521128284962}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: mine_ready
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4220862962247480}
   - component: {fileID: 198645089016007774}
   - component: {fileID: 199441853609958186}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: stay_ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
