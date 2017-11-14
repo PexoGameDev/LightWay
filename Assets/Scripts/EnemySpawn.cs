@@ -14,17 +14,31 @@ public class EnemySpawn : MonoBehaviour {
         }
     }
 
-    public int enemyCount;
+    public Bounds waveSize = new Bounds(1, 4);
     public int spawnAltitude;
     public GameObject enemyObject;
     public Bounds xBounds;
     public Bounds zBounds;
-	
-	void Start ()
+    public float spawnDelay = 2f;
+
+    private int enemies = 0;
+
+    void Start()
     {
-		for(int i=0; i<enemyCount; i++)
+        InvokeRepeating("Spawn", 0, spawnDelay);
+    }
+
+    void Spawn ()
+    {
+        if (enemies < waveSize.max)
         {
-            GameObject enemy = Instantiate(enemyObject, GetPosition(), Quaternion.identity, transform);
+            int enemyCount = Random.Range((int)waveSize.min, (int)waveSize.max - enemies);
+
+            for (int i = 0; i < enemyCount; i++)
+            {
+                GameObject enemy = Instantiate(enemyObject, GetPosition(), Quaternion.identity, transform);
+                enemies++;
+            }
         }
 	}
 

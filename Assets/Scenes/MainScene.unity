@@ -261,6 +261,9 @@ MonoBehaviour:
     type: 2}
   ammoCount: 99
   weaponCooldown: 0.3
+  GranadeMass: 0
+  GranadeDrag: 0
+  GranadeAngularDrag: 0
 --- !u!114 &116142828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,12 +997,16 @@ MonoBehaviour:
   soundList:
   - name: Shot 1
     source: {fileID: 558627509}
+    pitchMin: -1.33
+    pitchMax: 2.07
+    volumeMin: 0.16
+    volumeMax: 1
   - name: Sho 2
     source: {fileID: 558627511}
-  pitchMin: 0.357
-  pitchMax: 0.639
-  volumeMin: 0.265
-  volumeMax: 0.89
+    pitchMin: -3
+    pitchMax: 3
+    volumeMin: 0.16
+    volumeMax: 1
 --- !u!82 &558627511
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1012,7 +1019,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 21382193538c574498eb8ff737e83a26, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 3
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -1659,7 +1666,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35dcea22feb5b64189086f16906b5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCount: 4
+  waveSize:
+    min: 1.01
+    max: 4
   spawnAltitude: 6
   enemyObject: {fileID: 1524664417140356, guid: bdcc49fa0ec122944b2af9babf4ba03b,
     type: 2}
@@ -1669,6 +1678,7 @@ MonoBehaviour:
   zBounds:
     min: -86
     max: 68
+  spawnDelay: 2
 --- !u!1 &1077220329
 GameObject:
   m_ObjectHideFlags: 0
