@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 195832242374224134}
   - component: {fileID: 114022816297358506}
   - component: {fileID: 114133357547119100}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBulletPrefab: {fileID: 1297229644617840, guid: 9234f57a746c9454981b319c7149dadc,
     type: 2}
-  weaponCooldown: 0.3
 --- !u!114 &114133357547119100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,7 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f862905f6ca1f9d42aa84c0cb6b60f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ground: {fileID: 0}
 --- !u!195 &195832242374224134
 NavMeshAgent:
   m_ObjectHideFlags: 1
