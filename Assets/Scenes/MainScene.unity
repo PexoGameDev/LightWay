@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.39705884, g: 0.39705884, b: 0.39705884, a: 1}
   m_FogMode: 2
   m_FogDensity: 0.01
@@ -1667,7 +1667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSize:
-    min: 1.01
+    min: 1
     max: 4
   spawnAltitude: 6
   enemyObject: {fileID: 1524664417140356, guid: bdcc49fa0ec122944b2af9babf4ba03b,
@@ -3186,7 +3186,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2122206048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 512, y: 384, z: 0}
+  m_LocalPosition: {x: 435.5, y: 275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1159063298}
