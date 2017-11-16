@@ -8,7 +8,7 @@ public class LaserWeapon : Weapon {
     public float weaponCooldown = 1f; //It's public only because [SerializeField] returns some weird error
     Ray laserRaycast;
     RaycastHit laserRaycastHit;
-    int raycastLayer = 8;
+    int raycastLayer = (1 << 0);
 
     // PUBLIC PROPERTIES //
     public LineRenderer LaserPrefab
@@ -46,18 +46,17 @@ public class LaserWeapon : Weapon {
     {
         if (AmmoCount > 0)
         {
-            print(Physics.Raycast(PlayerController.Player.transform.position, JoystickScript.ShootingAngle, out laserRaycastHit, 1000f, raycastLayer));
             if (Physics.Raycast(PlayerController.Player.transform.position, JoystickScript.ShootingAngle, out laserRaycastHit, 1000f, raycastLayer))
             {
-                print(laserRaycastHit.point);
-
-                LineRenderer tmpLaser = new GameObject("Laser").AddComponent<LineRenderer>(); //Instantiate(LaserPrefab, PlayerController.Player.transform.position + JoystickScript.ShootingAngle*3, Quaternion.identity);
+                LineRenderer tmpLaser = Instantiate(LaserPrefab, PlayerController.Player.transform.position + JoystickScript.ShootingAngle*3, Quaternion.identity).GetComponent<LineRenderer>();
+                Destroy(tmpLaser, 0.2f);
 
                 tmpLaser.startColor = Color.cyan;
                 tmpLaser.endColor = Color.green;
 
-                tmpLaser.SetPosition(0, PlayerController.Player.transform.position + JoystickScript.ShootingAngle * 3);
+                tmpLaser.SetPosition(0, PlayerController.Player.transform.position);
                 tmpLaser.SetPosition(1, laserRaycastHit.point);
+
                 AmmoCount--;
             }
 
