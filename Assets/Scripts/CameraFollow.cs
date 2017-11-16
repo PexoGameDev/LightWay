@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour
 
 	void Update ()
     {
+//Comment
         Vector3 newPosition = new Vector3(Mathf.Clamp(target.position.x, minPosition.x, maxPosition.x), target.position.y, Mathf.Clamp(target.position.z, minPosition.z, maxPosition.z)) + offset;
         transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothness);
 	}
