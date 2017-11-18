@@ -4,7 +4,7 @@ public class PlayerShooting : MonoBehaviour {
 
 	#region Variables
 	// FIELDS //
-	[SerializeField] GameObject playerBulletPrefab;
+	public GameObject playerBulletPrefab;
     static Weapon chosenWeapon;
 
 	float weaponCooldownTimePassed = 0f;

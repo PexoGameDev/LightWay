@@ -4,10 +4,10 @@ public abstract class Weapon : MonoBehaviour {
 
     #region Variables
     // FIELDS //
-    float weaponCooldown = 0.1f;
-    int ammoCount = 1;
+    protected float weaponCooldown = 0.1f;
+    protected int ammoCount = 1;
 
-    // PUBLIC PROPERTIES //
+    // PROPERTIES //
     public virtual float WeaponCooldown
     {
         get { return weaponCooldown; }
@@ -17,7 +17,16 @@ public abstract class Weapon : MonoBehaviour {
     public virtual int AmmoCount
     {
         get { return ammoCount; }
-        set { ammoCount = value; }
+
+        set
+        {
+            ammoCount = value;
+            if (ammoCount <= 0)
+            {
+                ammoCount = 0;
+                print("Out of ammo in" + name + "!");
+            }
+        }
     }
     #endregion
 

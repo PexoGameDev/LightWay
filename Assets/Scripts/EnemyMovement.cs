@@ -6,10 +6,11 @@ public class EnemyMovement : MonoBehaviour {
 
     #region Variables
     // FIELDS //
+    public bool invert = false;
     [SerializeField] float targetDelay = 0.1f;
 
-    GameObject player;
-    NavMeshAgent navMeshAgent;
+    private GameObject player;
+    private NavMeshAgent navMeshAgent;
 	// PUBLIC PROPERTIES //
 
 
@@ -42,7 +43,7 @@ public class EnemyMovement : MonoBehaviour {
     {
         for (; ; )
         {
-            navMeshAgent.SetDestination(player.transform.position);
+            navMeshAgent.SetDestination(player.transform.position*(invert ? -1 : 1));
             yield return new WaitForSeconds(targetDelay);
         }
     }

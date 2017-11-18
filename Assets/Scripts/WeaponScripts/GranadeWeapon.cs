@@ -4,41 +4,25 @@ public class GranadeWeapon : Weapon {
 
     #region Variables
     // FIELDS //
-    [SerializeField] [Range(0.01f,0.9f)] float slope = 0.3f;
-    [SerializeField] GameObject granadePrefab;
-    public int ammoCount = 99; //It's public only because [SerializeField] returns some weird error
-    public float weaponCooldown = 1f; //It's public only because [SerializeField] returns some weird error
-    [SerializeField] float GranadeMass;
-    [SerializeField] float GranadeDrag;
-    [SerializeField] float GranadeAngularDrag;
+    [Range(0.01f,0.9f)]
+    public float slope = 0.3f;
+    public GameObject granadePrefab;
+    public float GranadeMass;
+    public float GranadeDrag;
+    public float GranadeAngularDrag;
     // PUBLIC PROPERTIES //
     public GameObject GranadePrefab
     {
         get { return granadePrefab; }
         set { granadePrefab = value; }
     }
-
-    public override int AmmoCount
-    {
-        get { return ammoCount; }
-
-        set
-        {
-            ammoCount = value;
-            if (ammoCount <= 0)
-            {
-                ammoCount = 0;
-                print("Out of ammo in" + name + "!");
-            }
-        }
-    }
-
-    public override float WeaponCooldown
-    {
-        get { return weaponCooldown; }
-        set { weaponCooldown = value; }
-    }
     // PRIVATE PROPERTIES //
+
+    public GranadeWeapon()
+    {
+        WeaponCooldown = 1f;
+        AmmoCount = 99;
+    }
 
     #endregion
     void Start()

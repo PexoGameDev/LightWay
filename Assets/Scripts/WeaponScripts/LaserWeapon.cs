@@ -3,9 +3,7 @@
 public class LaserWeapon : Weapon {
     #region Variables
     // FIELDS //
-    [SerializeField] LineRenderer laserPrefab;
-    public int ammoCount = 99; //It's public only because [SerializeField] returns some weird error
-    public float weaponCooldown = 1f; //It's public only because [SerializeField] returns some weird error
+    public LineRenderer laserPrefab;
     Ray laserRaycast;
     RaycastHit laserRaycastHit;
     int raycastLayer = (1 << 0);
@@ -16,29 +14,14 @@ public class LaserWeapon : Weapon {
         get { return laserPrefab; }
         set { laserPrefab = value; }
     }
-
-    public override int AmmoCount
-    {
-        get { return ammoCount; }
-
-        set
-        {
-            ammoCount = value;
-            if (ammoCount <= 0)
-            {
-                ammoCount = 0;
-                print("Out of ammo in" + name + "!");
-            }
-        }
-    }
-
-    public override float WeaponCooldown
-    {
-        get { return weaponCooldown; }
-        set { weaponCooldown = value; }
-    }
     // PRIVATE PROPERTIES //
     #endregion
+
+    public LaserWeapon()
+    {
+        AmmoCount = 99;
+        WeaponCooldown = 1f;
+    }
 
     #region Public Methods
     // PUBLIC METHODS //

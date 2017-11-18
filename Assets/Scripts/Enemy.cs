@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
     // PUBLIC PROPERTIES //
     public float DPS { get; private set; }
     private float hitPoints = 30;
+    public GameObject drop;
 
     public float HitPoints
     {
@@ -19,6 +20,8 @@ public class Enemy : MonoBehaviour {
             {
                 hitPoints = 0;
                 GameController.Score += scoreValue;
+                if(drop != null)
+                    Instantiate(drop, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }

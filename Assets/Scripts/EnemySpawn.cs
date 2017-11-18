@@ -36,7 +36,7 @@ public class EnemySpawn : MonoBehaviour {
 
             for (int i = 0; i < enemyCount; i++)
             {
-                GameObject enemy = Instantiate(enemyObject, GetPosition(), Quaternion.identity, transform);
+                Instantiate(enemyObject, GetPosition(), Quaternion.identity, transform);
                 enemies++;
             }
         }

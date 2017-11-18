@@ -4,9 +4,7 @@ public class MineWeapon : Weapon {
 
     #region Variables
     // FIELDS //
-    [SerializeField] GameObject minePrefab;
-    public int ammoCount = 99; //It's public only because [SerializeField] returns some weird error
-    public float weaponCooldown = 1f; //It's public only because [SerializeField] returns some weird error
+    public GameObject minePrefab;
 
     // PUBLIC PROPERTIES //
     public GameObject MinePrefab
@@ -14,30 +12,15 @@ public class MineWeapon : Weapon {
         get { return minePrefab; }
         set { minePrefab = value; }
     }
-
-    public override int AmmoCount
-    {
-        get { return ammoCount; }
-
-        set
-        {
-            ammoCount = value;
-            if (ammoCount <= 0)
-            {
-                ammoCount = 0;
-                print("Out of ammo in" + name + "!");
-            }
-        }
-    }
-
-    public override float WeaponCooldown
-    {
-        get { return weaponCooldown; }
-        set { weaponCooldown = value; }
-    }
     // PRIVATE PROPERTIES //
 
     #endregion
+
+    public MineWeapon()
+    {
+        WeaponCooldown = 1f;
+        AmmoCount = 99;
+    }
 
     #region Public Methods
     // PUBLIC METHODS //
