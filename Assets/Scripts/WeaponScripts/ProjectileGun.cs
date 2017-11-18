@@ -4,8 +4,9 @@ public class ProjectileGun : Weapon{
 
     #region Variables
     // FIELDS //
+    [SerializeField]
     private GameObject projectilePrefab;
-    private GameObject defaultProjectile;
+    //private GameObject defaultProjectile;
     
     public GameObject ProjectilePrefab
     {
