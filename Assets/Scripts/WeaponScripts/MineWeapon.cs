@@ -16,12 +16,6 @@ public class MineWeapon : Weapon {
 
     #endregion
 
-    public MineWeapon()
-    {
-        WeaponCooldown = 1f;
-        AmmoCount = 99;
-    }
-
     #region Public Methods
     // PUBLIC METHODS //
     public override void Shoot()

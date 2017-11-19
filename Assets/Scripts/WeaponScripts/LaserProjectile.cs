@@ -6,7 +6,7 @@ public class LaserProjectile : MonoBehaviour {
     // FIELDS //
 
     // PUBLIC PROPERTIES //
-
+    public int Damage { get; set; }
     // PRIVATE PROPERTIES //
 
     #endregion
@@ -14,37 +14,34 @@ public class LaserProjectile : MonoBehaviour {
     #region Unity Methods
     void Start () 
 	{
-        	
-
-	}
-	
-    void Update () 
-	{
-		
-
-	}
+        SetCollider();
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        Collider[] objectsInExplosionRange = Physics.OverlapBox(transform.position, new Vector3(1f, 1f, 1f)); //Working on it, it's supposed to be collider covering whole line renderer, but well... it doesn't work yet.
-        for (int i = 0; i < objectsInExplosionRange.Length; i++)
+        if(other.GetComponent<Enemy>())
         {
-            Enemy tmpEnemy = objectsInExplosionRange[i].GetComponent<Enemy>();
-            if (tmpEnemy != null)
-            {
-                //damage 'em
-            }
+            Enemy tmpEnemy = other.GetComponent<Enemy>();
+            tmpEnemy.HitPoints -= Damage;
+            //Some Enemy's animation of getting damaged?
         }
     }
     #endregion
-
-    #region Public Methods
-    // PUBLIC METHODS //
-
-    #endregion
-
     #region Private Methods
-    // PRIVATE METHODS //
+    void SetCollider()
+    {
+        LineRenderer myLine = GetComponent<LineRenderer>();
+        BoxCollider myCollider = GetComponent<BoxCollider>();
 
+        Vector3 startPoint = myLine.GetPosition(0);
+        Vector3 endPoint = myLine.GetPosition(1);
+        Vector3 midPoint = (startPoint + endPoint) / 2;
+        float lineLenght = Vector3.Distance(startPoint, endPoint);
+
+        myCollider.size = new Vector3(lineLenght, 4f, 4f);
+        myCollider.transform.position = midPoint;
+        myCollider.transform.LookAt(startPoint);
+        myCollider.transform.Rotate(0, 90f, 0);
+    }
     #endregion
 }

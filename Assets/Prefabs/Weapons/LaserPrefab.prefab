@@ -19,8 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4012740174168476}
-  - component: {fileID: 120154185888564458}
   - component: {fileID: 65771002786360696}
+  - component: {fileID: 120154185888564458}
+  - component: {fileID: 114177163378586206}
   m_Layer: 0
   m_Name: LaserPrefab
   m_TagString: Untagged
@@ -51,8 +52,19 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 50, y: 1, z: 1.6}
-  m_Center: {x: -25, y: 15, z: 0}
+  m_Size: {x: -50, y: 4, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114177163378586206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276799355465616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbd5cbe3e7a89f42b9c2c86101d03df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!120 &120154185888564458
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -88,11 +100,11 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 15, z: 0}
-  - {x: -50, y: 15, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: -50, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 4
     widthCurve:
       serializedVersion: 2
       m_Curve:

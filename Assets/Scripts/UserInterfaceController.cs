@@ -10,6 +10,9 @@ public class UserInterfaceController : MonoBehaviour {
     [SerializeField] Button ChangeWeaponGranadeButton;
     [SerializeField] Button ChangeWeaponLaserButton;
 
+    WeaponController weaponController;
+    PlayerShooting playerShootingModule;
+
     // PUBLIC PROPERTIES //
 
 
@@ -18,6 +21,12 @@ public class UserInterfaceController : MonoBehaviour {
     #endregion
 
     #region Unity Methods
+    void Awake()
+    {
+        weaponController = FindObjectOfType<WeaponController>();
+        playerShootingModule = FindObjectOfType<PlayerShooting>();
+    }
+
     void Start () 
 	{
         AddButtonsListeners();
@@ -38,10 +47,10 @@ public class UserInterfaceController : MonoBehaviour {
 	// PRIVATE METHODS //
     void AddButtonsListeners()
     {
-        ChangeWeaponProjectileGunButton .onClick.AddListener(delegate { PlayerShooting.ChosenWeapon = WeaponController.ProjectileGunWeapon; });
-        ChangeWeaponGranadeButton       .onClick.AddListener(delegate { PlayerShooting.ChosenWeapon = WeaponController.GranadeWeapon; });
-        ChangeWeaponMineButton          .onClick.AddListener(delegate { PlayerShooting.ChosenWeapon = WeaponController.MineWeapon; });
-        ChangeWeaponLaserButton         .onClick.AddListener(delegate { PlayerShooting.ChosenWeapon = WeaponController.LaserWeapon; });
+        ChangeWeaponProjectileGunButton .onClick.AddListener(delegate { playerShootingModule.ChosenWeapon = weaponController.ProjectileGunWeapon; });
+        ChangeWeaponGranadeButton       .onClick.AddListener(delegate { playerShootingModule.ChosenWeapon = weaponController.GranadeWeapon; });
+        ChangeWeaponMineButton          .onClick.AddListener(delegate { playerShootingModule.ChosenWeapon = weaponController.MineWeapon; });
+        ChangeWeaponLaserButton         .onClick.AddListener(delegate { playerShootingModule.ChosenWeapon = weaponController.LaserWeapon; });
 
     }
     #endregion

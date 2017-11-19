@@ -6,10 +6,10 @@ public class WeaponController : MonoBehaviour {
 	// FIELDS //
 
     // PUBLIC PROPERTIES //
-    public static ProjectileGun ProjectileGunWeapon { get; private set; }
-    public static MineWeapon MineWeapon { get; private set; }
-    public static GranadeWeapon GranadeWeapon { get; private set; }
-    public static LaserWeapon LaserWeapon{ get; private set; }
+    public ProjectileGun ProjectileGunWeapon { get; private set; }
+    public MineWeapon MineWeapon { get; private set; }
+    public GranadeWeapon GranadeWeapon { get; private set; }
+    public LaserWeapon LaserWeapon{ get; private set; }
 
     // PRIVATE PROPERTIES //
     #endregion

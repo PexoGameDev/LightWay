@@ -5,9 +5,11 @@ public class GranadeScript : MonoBehaviour {
     #region Variables
     // FIELDS //
     public GameObject explosionParticles;
+
+    Rigidbody myRb;
+
     float explosionRadius = 10f;
     int damage = 20;
-    private Rigidbody myRb;
     // PUBLIC PROPERTIES //
     public float ExplosionRadius
     {

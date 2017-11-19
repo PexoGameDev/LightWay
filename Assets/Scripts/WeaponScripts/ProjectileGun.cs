@@ -4,10 +4,9 @@ public class ProjectileGun : Weapon{
 
     #region Variables
     // FIELDS //
-    [SerializeField]
-    private GameObject projectilePrefab;
-    //private GameObject defaultProjectile;
-    
+    [SerializeField] GameObject projectilePrefab;
+    PlayerBullet tmpProjectile;
+
     public GameObject ProjectilePrefab
     {
         private get { return projectilePrefab; }
@@ -16,25 +15,19 @@ public class ProjectileGun : Weapon{
     // PRIVATE PROPERTIES //
     #endregion
 
-    public ProjectileGun()
-    {
-        AmmoCount = 99;
-        WeaponCooldown = 1f;
-    }
-
     #region Public Methods
     // PUBLIC METHODS //
     override public void Shoot()
     {
-            Instantiate
-            (
-                projectilePrefab, PlayerController.Player.transform.position + JoystickScript.ShootingAngle * 3, Quaternion.identity
-            )   .GetComponent<PlayerBullet>().DirectionOfShot = JoystickScript.ShootingAngle;
+        tmpProjectile = Instantiate (projectilePrefab, PlayerController.Player.transform.position + JoystickScript.ShootingAngle * 3, Quaternion.identity).GetComponent<PlayerBullet>();
+
+        tmpProjectile.DirectionOfShot = JoystickScript.ShootingAngle;
+        tmpProjectile.Damage = Damage;
     }
-	#endregion
+    #endregion
 
-	#region Private Methods
-	// PRIVATE METHODS //
+    #region Private Methods
+    // PRIVATE METHODS //
 
-	#endregion
+    #endregion
 }

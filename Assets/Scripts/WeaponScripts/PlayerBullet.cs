@@ -33,6 +33,11 @@ public class PlayerBullet : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.GetComponent<Enemy>())
+        {
+            other.GetComponent<Enemy>().HitPoints -= Damage;
+        }
+
         Hit();
     }
 
@@ -40,7 +45,6 @@ public class PlayerBullet : MonoBehaviour {
     // PUBLIC METHODS //
     public void Hit()
     {
-        //instantiate particles
         Instantiate(BulletParticle,transform.position,Quaternion.identity);
         Destroy(gameObject);
     }

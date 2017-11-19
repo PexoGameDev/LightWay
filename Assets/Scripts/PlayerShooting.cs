@@ -5,11 +5,12 @@ public class PlayerShooting : MonoBehaviour {
 	#region Variables
 	// FIELDS //
 	public GameObject playerBulletPrefab;
-    static Weapon chosenWeapon;
+    WeaponController weaponController;
+    Weapon chosenWeapon;
 
 	float weaponCooldownTimePassed = 0f;
     // PUBLIC PROPERTIES //
-    public static Weapon ChosenWeapon
+    public Weapon ChosenWeapon
     {
         get { return chosenWeapon; }
         set
@@ -25,9 +26,13 @@ public class PlayerShooting : MonoBehaviour {
     #endregion
 
     #region Unity Methods
+    private void Awake()
+    {
+        weaponController = FindObjectOfType<WeaponController>();
+    }
     void Start () 
 	{
-        chosenWeapon = WeaponController.ProjectileGunWeapon;
+        chosenWeapon = weaponController.ProjectileGunWeapon;
 	}
 	
 	void Update () 

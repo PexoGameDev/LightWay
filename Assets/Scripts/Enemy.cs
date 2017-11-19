@@ -20,8 +20,12 @@ public class Enemy : MonoBehaviour {
             {
                 hitPoints = 0;
                 GameController.Score += scoreValue;
-                if(drop != null)
+
+                if (drop != null)
+                {
                     Instantiate(drop, transform.position, Quaternion.identity);
+                }
+
                 Destroy(gameObject);
             }
         }
@@ -31,29 +35,12 @@ public class Enemy : MonoBehaviour {
     #endregion
 
     #region Unity Methods
-    void Awake()
-    {
-
-    }
     void Start () 
 	{
-        DPS = 10;
+        DPS = 10; //DEBUG
 	}
-	
-	void Update () 
-	{
-		
-	}
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<PlayerBullet>())
-        {
-            PlayerBullet tmpBullet = other.GetComponent<PlayerBullet>();
-            HitPoints -= tmpBullet.Damage;
-            tmpBullet.Hit();
-        }
-
         if (other.gameObject.tag == "Explosive")
         {
             Explosive explosive = other.gameObject.GetComponent(typeof(Explosive)) as Explosive;

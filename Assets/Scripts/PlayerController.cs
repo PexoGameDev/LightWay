@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour {
 	{
 		if(other.GetComponent<Enemy>() && canBeHit)
 		{
-            print("Ouch! I'm hit!");
             Enemy tmpEnemy = other.GetComponent<Enemy>();
             HitPoints -= tmpEnemy.DPS;
             canBeHit = false;

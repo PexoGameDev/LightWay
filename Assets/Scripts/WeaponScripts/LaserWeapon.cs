@@ -17,12 +17,6 @@ public class LaserWeapon : Weapon {
     // PRIVATE PROPERTIES //
     #endregion
 
-    public LaserWeapon()
-    {
-        AmmoCount = 99;
-        WeaponCooldown = 1f;
-    }
-
     #region Public Methods
     // PUBLIC METHODS //
     public override void Shoot()
@@ -31,14 +25,18 @@ public class LaserWeapon : Weapon {
         {
             if (Physics.Raycast(PlayerController.Player.transform.position, JoystickScript.ShootingAngle, out laserRaycastHit, 1000f, raycastLayer))
             {
-                LineRenderer tmpLaser = Instantiate(LaserPrefab, PlayerController.Player.transform.position + JoystickScript.ShootingAngle*3, Quaternion.identity).GetComponent<LineRenderer>();
-                Destroy(tmpLaser, 0.2f);
+                LineRenderer tmpLaser = Instantiate(LaserPrefab, PlayerController.Player.transform.position, PlayerController.Player.transform.rotation).GetComponent<LineRenderer>();
+                Destroy(tmpLaser.gameObject, 0.2f);
 
-                tmpLaser.startColor = Color.cyan;
-                tmpLaser.endColor = Color.green;
+                tmpLaser.startColor = Color.red;
+                tmpLaser.endColor = Color.yellow;
 
                 tmpLaser.SetPosition(0, PlayerController.Player.transform.position);
                 tmpLaser.SetPosition(1, laserRaycastHit.point);
+
+                LaserProjectile projectile = tmpLaser.GetComponent<LaserProjectile>();
+
+                projectile.Damage = Damage;
 
                 AmmoCount--;
             }
