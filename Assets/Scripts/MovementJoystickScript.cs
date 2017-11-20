@@ -1,68 +1,65 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class JoystickScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler {
+public class MovementJoystickScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+{
 
     #region Variables
     // FIELDS //
     [SerializeField] GameObject joystick;
     [SerializeField] GameObject joystickPivot;
 
-    PlayerShooting playerShootingScript;
-    Vector2 joystickPivotOrigin;
+    PlayerMovement playerMovementScript;
+    Vector3 MovingAngle;
     Vector3 joystickAngle;
+    Vector2 joystickPivotOrigin;
 
-    bool isShooting = false;
+    bool isMoving = false;
     // PUBLIC PROPERTIES //
-    public static Vector3 ShootingAngle { get; private set; }
+
     // PRIVATE PROPERTIES //
     #endregion
 
     #region Unity Methods
     void Awake()
     {
-        playerShootingScript = FindObjectOfType<PlayerShooting>();
+        playerMovementScript = FindObjectOfType<PlayerMovement>();
         joystickPivotOrigin = new Vector2(joystickPivot.transform.position.x, joystickPivot.transform.position.y);
-        ShootingAngle = Vector3.forward;
+        MovingAngle = Vector3.forward;
     }
 
     void Update()
     {
-        if(isShooting)
+        if (isMoving)
         {
-            playerShootingScript.Shoot();
+            playerMovementScript.MovePlayer(MovingAngle);
             joystick.transform.position = joystickPivot.transform.position + joystickAngle * 100;
         }
     }
     public void OnDrag(PointerEventData pointerEventData)
     {
-        SetShootingAngle(pointerEventData);
+        SetMovingAngle(pointerEventData);
     }
 
     public void OnPointerUp(PointerEventData pointerEventData)
     {
-        isShooting = false;
+        isMoving = false;
         joystick.transform.position = joystickPivot.transform.position;
     }
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
-        SetShootingAngle(pointerEventData);
-        isShooting = true;
+        SetMovingAngle(pointerEventData);
+        isMoving = true;
     }
-    #endregion
-
-    #region Public Methods
-        // PUBLIC METHODS //
     #endregion
 
     #region Private Methods
     // PRIVATE METHODS //
-    void SetShootingAngle(PointerEventData pointerEventData)
+    void SetMovingAngle(PointerEventData pointerEventData)
     {
         joystickAngle = (pointerEventData.position - joystickPivotOrigin).normalized;
-        ShootingAngle = new Vector3(-joystickAngle.x, 0, -joystickAngle.y);
+        MovingAngle = new Vector3(-joystickAngle.x, 0, -joystickAngle.y);
     }
     #endregion
 }

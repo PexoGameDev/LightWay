@@ -45,7 +45,7 @@ public class GranadeWeapon : Weapon {
         if (AmmoCount > 0)
         {
             GranadeScript tmpGranade = Instantiate(GranadePrefab, PlayerController.Player.transform.position + Vector3.up*4, Quaternion.identity).GetComponent<GranadeScript>();
-            tmpGranade.Force = new Vector3(JoystickScript.ShootingAngle.x, Slope, JoystickScript.ShootingAngle.z) * 50;
+            tmpGranade.Force = new Vector3(ShootingJoystickScript.ShootingAngle.x, Slope, ShootingJoystickScript.ShootingAngle.z) * 50;
             tmpGranade.StartMovement();
             AmmoCount--;
         }

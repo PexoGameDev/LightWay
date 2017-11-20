@@ -30,7 +30,6 @@ public abstract class Weapon : MonoBehaviour {
             if (ammoCount <= 0)
             {
                 ammoCount = 0;
-                print("Out of ammo in" + name + "!");
             }
         }
     }

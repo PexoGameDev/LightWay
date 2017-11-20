@@ -19,9 +19,9 @@ public class ProjectileGun : Weapon{
     // PUBLIC METHODS //
     override public void Shoot()
     {
-        tmpProjectile = Instantiate (projectilePrefab, PlayerController.Player.transform.position + JoystickScript.ShootingAngle * 3, Quaternion.identity).GetComponent<PlayerBullet>();
+        tmpProjectile = Instantiate (projectilePrefab, PlayerController.Player.transform.position + ShootingJoystickScript.ShootingAngle * 3, Quaternion.identity).GetComponent<PlayerBullet>();
 
-        tmpProjectile.DirectionOfShot = JoystickScript.ShootingAngle;
+        tmpProjectile.DirectionOfShot = ShootingJoystickScript.ShootingAngle;
         tmpProjectile.Damage = Damage;
     }
     #endregion

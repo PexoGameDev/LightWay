@@ -23,7 +23,9 @@ public class PlayerMovement : MonoBehaviour {
 	
 	void Update () 
 	{
-		if(Input.GetMouseButtonDown(0))
+
+        // RAYCAST POINT'N'CLICK MOVEMENT
+	/*	if(Input.GetMouseButtonDown(0))
         {
             raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(raycast, out rayHit))
@@ -33,13 +35,17 @@ public class PlayerMovement : MonoBehaviour {
                     navMeshAgent.SetDestination(rayHit.point);
                 }
             }
-        }
+        }*/
 	}
 	#endregion
 
 	#region Public Methods
 	// PUBLIC METHODS //
-
+    public void MovePlayer(Vector3 movingAngle)
+    {
+        transform.LookAt(transform.position + movingAngle);
+        transform.position += movingAngle;
+    }
 	#endregion
 
 	#region Private Methods

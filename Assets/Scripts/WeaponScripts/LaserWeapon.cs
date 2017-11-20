@@ -23,7 +23,7 @@ public class LaserWeapon : Weapon {
     {
         if (AmmoCount > 0)
         {
-            if (Physics.Raycast(PlayerController.Player.transform.position, JoystickScript.ShootingAngle, out laserRaycastHit, 1000f, raycastLayer))
+            if (Physics.Raycast(PlayerController.Player.transform.position, ShootingJoystickScript.ShootingAngle, out laserRaycastHit, 1000f, raycastLayer))
             {
                 LineRenderer tmpLaser = Instantiate(LaserPrefab, PlayerController.Player.transform.position, PlayerController.Player.transform.rotation).GetComponent<LineRenderer>();
                 Destroy(tmpLaser.gameObject, 0.2f);
