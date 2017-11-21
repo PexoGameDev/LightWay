@@ -4,7 +4,12 @@ public class MineWeapon : Weapon {
 
     #region Variables
     // FIELDS //
-    public GameObject minePrefab;
+    [SerializeField] GameObject minePrefab;
+
+    [SerializeField] float explosionRadius;
+    [SerializeField] float mineTimeDelay;
+
+    MineScript tmpMine;
 
     // PUBLIC PROPERTIES //
     public GameObject MinePrefab
@@ -12,6 +17,20 @@ public class MineWeapon : Weapon {
         get { return minePrefab; }
         set { minePrefab = value; }
     }
+
+
+    public float ExplosionRadius
+    {
+        get { return explosionRadius; }
+        set { explosionRadius = value; }
+    }
+
+    public float MineTimeDelay
+    {
+        get { return mineTimeDelay; }
+        set { mineTimeDelay = value; }
+    }
+
     // PRIVATE PROPERTIES //
 
     #endregion
@@ -22,7 +41,13 @@ public class MineWeapon : Weapon {
     {
         if (AmmoCount > 0)
         {
-            Instantiate(MinePrefab, PlayerController.Player.transform.position, Quaternion.identity);
+            tmpMine = Instantiate(MinePrefab, PlayerController.Player.transform.position, Quaternion.identity, GameController.PlayerBulletsContainer).GetComponent<MineScript>();
+
+            tmpMine.Damage = Damage;
+            tmpMine.ExplosionRadius = ExplosionRadius;
+            tmpMine.ExplosionParticles = Particles;
+            tmpMine.TimeDelay = MineTimeDelay;
+
             AmmoCount--;
         }
         else

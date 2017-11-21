@@ -1,29 +1,14 @@
 ﻿using UnityEngine;
 
-public class GranadeScript : MonoBehaviour {
+public class GranadeScript : Explosive {
 
     #region Variables
     // FIELDS //
-    public GameObject explosionParticles;
-
     Rigidbody myRb;
 
-    float explosionRadius = 10f;
-    int damage = 20;
     // PUBLIC PROPERTIES //
-    public float ExplosionRadius
-    {
-        get { return explosionRadius; }
-        set { explosionRadius = value; }
-    }
-
-    public int Damage
-    {
-        get { return damage; }
-        set { damage = value; }
-    }
-
     public Vector3 Force { get; set; }
+
     // PRIVATE PROPERTIES //
     #endregion
 
@@ -47,24 +32,6 @@ public class GranadeScript : MonoBehaviour {
     public void StartMovement()
     {
         myRb.AddForce(Force, ForceMode.Impulse);
-    }
-    #endregion
-
-    #region Private Methods
-    // PRIVATE METHODS //
-    void Explode()
-    {
-        Instantiate(explosionParticles, transform.position, Quaternion.identity);
-        Collider[] objectsInExplosionRange = Physics.OverlapSphere(transform.position, ExplosionRadius);
-        for (int i = 0; i < objectsInExplosionRange.Length; i++)
-        {
-            Enemy tmpEnemy = objectsInExplosionRange[i].GetComponent<Enemy>();
-            if (tmpEnemy!=null)
-            {
-                tmpEnemy.HitPoints -= Damage;
-            }
-        }
-        Destroy(gameObject);
     }
     #endregion
 }

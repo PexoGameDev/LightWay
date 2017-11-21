@@ -4,17 +4,23 @@ public class PlayerBullet : MonoBehaviour {
 
 	#region Variables
 	// FIELDS //
-    [SerializeField] GameObject BulletParticle;
+    [SerializeField] GameObject bulletParticle;
 	[SerializeField] float timeOfLife = 3f;
-	float bulletSpeed = 2f;
     float damage = 2f;
-
     // PUBLIC PROPERTIES //
     public Vector3 DirectionOfShot { get; set; }
     public float Damage
     {
         get { return damage; }
         set { damage = value; }
+    }
+
+    public float KnockbackForce {get;set;}
+    public float BulletSpeed { get; set; }
+    public GameObject BulletParticle
+    {
+        get { return bulletParticle; }
+        set { bulletParticle = value; }
     }
     // PRIVATE PROPERTIES //
     #endregion
@@ -27,7 +33,7 @@ public class PlayerBullet : MonoBehaviour {
 	
 	void FixedUpdate () 
 	{
-		transform.position += DirectionOfShot * bulletSpeed;
+		transform.position += DirectionOfShot * BulletSpeed;
 	}
     #endregion
 
@@ -36,6 +42,7 @@ public class PlayerBullet : MonoBehaviour {
         if(other.GetComponent<Enemy>())
         {
             other.GetComponent<Enemy>().HitPoints -= Damage;
+            other.attachedRigidbody.AddForce(DirectionOfShot * KnockbackForce, ForceMode.Impulse);
         }
 
         Hit();
@@ -45,7 +52,7 @@ public class PlayerBullet : MonoBehaviour {
     // PUBLIC METHODS //
     public void Hit()
     {
-        Instantiate(BulletParticle,transform.position,Quaternion.identity);
+        Instantiate(BulletParticle,transform.position,Quaternion.identity, GameController.ParticlesContainer);
         Destroy(gameObject);
     }
 	#endregion

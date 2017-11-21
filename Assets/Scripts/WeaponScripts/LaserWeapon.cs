@@ -25,7 +25,7 @@ public class LaserWeapon : Weapon {
         {
             if (Physics.Raycast(PlayerController.Player.transform.position, ShootingJoystickScript.ShootingAngle, out laserRaycastHit, 1000f, raycastLayer))
             {
-                LineRenderer tmpLaser = Instantiate(LaserPrefab, PlayerController.Player.transform.position, PlayerController.Player.transform.rotation).GetComponent<LineRenderer>();
+                LineRenderer tmpLaser = Instantiate(LaserPrefab, PlayerController.Player.transform.position, PlayerController.Player.transform.rotation, GameController.PlayerBulletsContainer).GetComponent<LineRenderer>();
                 Destroy(tmpLaser.gameObject, 0.2f);
 
                 tmpLaser.startColor = Color.red;
@@ -34,8 +34,9 @@ public class LaserWeapon : Weapon {
                 tmpLaser.SetPosition(0, PlayerController.Player.transform.position);
                 tmpLaser.SetPosition(1, laserRaycastHit.point);
 
-                LaserProjectile projectile = tmpLaser.GetComponent<LaserProjectile>();
+                Instantiate(Particles, laserRaycastHit.point, Quaternion.identity, GameController.ParticlesContainer); 
 
+                LaserProjectile projectile = tmpLaser.GetComponent<LaserProjectile>();
                 projectile.Damage = Damage;
 
                 AmmoCount--;

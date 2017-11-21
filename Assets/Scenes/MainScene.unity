@@ -310,10 +310,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241d664e434543147873b68c58527ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponCooldown: 0.1
-  damage: 1
+  weaponCooldown: 1.5
+  damage: 30
   ammoCount: 99
+  particles: {fileID: 1949953438026030, guid: f380a90c5ef5dd040a8e11babf46cb64, type: 2}
   minePrefab: {fileID: 1072305027851718, guid: 3d40cd8d7d60023448909976b208d5b2, type: 2}
+  explosionRadius: 10
+  mineTimeDelay: 2
 --- !u!114 &116142827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,9 +328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b61aafa829ee54c93699e5b2bb1072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponCooldown: 0.1
-  damage: 1
+  weaponCooldown: 1
+  damage: 30
   ammoCount: 99
+  particles: {fileID: 1949953438026030, guid: f380a90c5ef5dd040a8e11babf46cb64, type: 2}
   granadePrefab: {fileID: 1379031620102234, guid: 339bd578d2d14fb40898a5f219f64cd1,
     type: 2}
   Slope: 0.3
@@ -335,7 +339,6 @@ MonoBehaviour:
   GranadeDrag: 0
   GranadeAngularDrag: 1
   ExplosionRadius: 10
-  Damage: 20
 --- !u!114 &116142828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,10 +351,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponCooldown: 0.1
-  damage: 1
+  damage: 3
   ammoCount: 99
+  particles: {fileID: 1760308769614208, guid: 048c38e0a63698541a85c1ab6623f373, type: 2}
   projectilePrefab: {fileID: 1297229644617840, guid: 9234f57a746c9454981b319c7149dadc,
     type: 2}
+  knockbackForce: 0.75
+  bulletSpeed: 2
 --- !u!114 &116142829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,8 +370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponCooldown: 0.5
-  damage: 1
+  damage: 20
   ammoCount: 99
+  particles: {fileID: 1760308769614208, guid: 048c38e0a63698541a85c1ab6623f373, type: 2}
   laserPrefab: {fileID: 120154185888564458, guid: 68b3987a7628e3e44b956a3e25261890,
     type: 2}
 --- !u!1 &156053343
@@ -1213,6 +1220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ground: {fileID: 2092775569}
+  playerBulletsContainer: {fileID: 381164477}
+  particlesContainer: {fileID: 1774898461}
 --- !u!4 &756596387 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4439021128316628, guid: fdbf58a485229d64bb57c42bf8c69571,
@@ -2829,6 +2838,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1774898460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1774898461}
+  m_Layer: 0
+  m_Name: Particles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1774898461
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1774898460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1139.6929, y: 359.99097, z: 588.999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1785214554
 GameObject:
   m_ObjectHideFlags: 0

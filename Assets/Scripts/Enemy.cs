@@ -39,15 +39,6 @@ public class Enemy : MonoBehaviour {
 	{
         DPS = 10; //DEBUG
 	}
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Explosive")
-        {
-            Explosive explosive = other.gameObject.GetComponent(typeof(Explosive)) as Explosive;
-            HitPoints -= explosive.damage;
-            Destroy(other.gameObject);
-        }
-    }
     #endregion
 
     #region Public Methods

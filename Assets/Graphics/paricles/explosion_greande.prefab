@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4003960927505424}
   - component: {fileID: 198447407116519726}
   - component: {fileID: 199950262512739658}
+  - component: {fileID: 114116894436239110}
   m_Layer: 0
   m_Name: explosion_greande
   m_TagString: Untagged
@@ -72,6 +73,18 @@ Transform:
   m_Father: {fileID: 4003960927505424}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114116894436239110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949953438026030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83dfb192a2dd95c4cb5314dd67f3e57b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
 --- !u!198 &198149303286623210
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -5,6 +5,9 @@ public class GameController : MonoBehaviour {
     #region Variables
     // FIELDS //
     [SerializeField] GameObject ground;
+    [SerializeField] Transform playerBulletsContainer;
+    [SerializeField] Transform particlesContainer;
+
     static int score = 0;
     // PUBLIC PROPERTIES //
     public static int Score
@@ -17,20 +20,20 @@ public class GameController : MonoBehaviour {
         }
 	}
     public static GameObject Ground { get; set; }
-	// PRIVATE PROPERTIES //
-	
-	#endregion
-	
-	#region Unity Methods
-	void Start () 
-	{
+    public static Transform PlayerBulletsContainer { get; set; }
+    public static Transform ParticlesContainer { get; set; }
 
-	}
-	
-	void Update () 
+    // PRIVATE PROPERTIES //
+
+    #endregion
+
+    #region Unity Methods
+    void Awake () 
 	{
         Ground = ground;
-	}
+        PlayerBulletsContainer = playerBulletsContainer;
+        ParticlesContainer = particlesContainer;
+    }
 	#endregion
 
 	#region Public Methods

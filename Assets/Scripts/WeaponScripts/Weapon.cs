@@ -7,6 +7,7 @@ public abstract class Weapon : MonoBehaviour {
     [SerializeField] protected float weaponCooldown = 0.1f;
     [SerializeField] protected int damage = 1;
     [SerializeField] protected int ammoCount = 1;
+    [SerializeField] protected GameObject particles;
 
     // PROPERTIES //
     public virtual float WeaponCooldown
@@ -32,6 +33,12 @@ public abstract class Weapon : MonoBehaviour {
                 ammoCount = 0;
             }
         }
+    }
+
+    public virtual GameObject Particles
+    {
+        get { return particles; }
+        set { particles = value; }
     }
     #endregion
 
