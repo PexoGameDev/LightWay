@@ -4,11 +4,12 @@ public class PlayerController : MonoBehaviour {
 
     #region Variables
     // FIELDS //
-    bool canBeHit = true;
-
     [SerializeField] float hitDelay = 0.2f;
-    float hitDelayTimePassed = 0f;
 
+    PlayerMovement playerMovement;
+
+    bool canBeHit = true;
+    float hitDelayTimePassed = 0f;
     float hitPoints;
     // PUBLIC PROPERTIES //
     public static GameObject Player { get; private set; }
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour {
     #region Unity Methods
     void Awake () 
 	{
+        playerMovement = GetComponent<PlayerMovement>();
         Player = gameObject;
         HitPoints = 100f;
 	}
@@ -57,6 +59,7 @@ public class PlayerController : MonoBehaviour {
             HitPoints -= tmpEnemy.DPS;
             canBeHit = false;
             hitDelayTimePassed = 0f;
+            playerMovement.GetKnockedBack((transform.position - tmpEnemy.transform.position)* tmpEnemy.KnockbackStrength);
         }
 	}
 	#endregion

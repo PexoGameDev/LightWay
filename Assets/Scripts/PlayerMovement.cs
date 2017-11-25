@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour {
@@ -8,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     NavMeshAgent navMeshAgent;
     RaycastHit rayHit;
     Ray raycast;
+    Rigidbody myRb;
 	// PUBLIC PROPERTIES //
 
 
@@ -16,40 +19,59 @@ public class PlayerMovement : MonoBehaviour {
 	#endregion
 	
 	#region Unity Methods
-	void Start () 
+	void Awake() 
 	{
         navMeshAgent = GetComponent<NavMeshAgent>();
+        myRb = GetComponent<Rigidbody>();
     }
 	
-	void Update () 
+	void Update() 
 	{
+#if UNITY_EDITOR
 
-        // RAYCAST POINT'N'CLICK MOVEMENT
-	/*	if(Input.GetMouseButtonDown(0))
+#elif UNITY_ANDROID
+        for (int i = 0; i < Input.touchCount; i++)
         {
-            raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(raycast, out rayHit))
+            if (Input.GetTouch(i).tapCount >= 2)
             {
-                if (rayHit.collider.gameObject == GameController.Ground)
+                raycast = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                if (Physics.Raycast(raycast, out rayHit))
                 {
-                    navMeshAgent.SetDestination(rayHit.point);
+                    if (rayHit.collider.gameObject == GameController.Ground)
+                    {
+                        navMeshAgent.SetDestination(rayHit.point);
+                    }
                 }
             }
-        }*/
-	}
-	#endregion
+        }
+#endif
+    }
+#endregion
 
-	#region Public Methods
-	// PUBLIC METHODS //
+    #region Public Methods
+    // PUBLIC METHODS //
     public void MovePlayer(Vector3 movingAngle)
     {
+        myRb.velocity = Vector3.zero;
         transform.LookAt(transform.position + movingAngle);
         transform.position += movingAngle;
     }
-	#endregion
 
-	#region Private Methods
-	// PRIVATE METHODS //
+    public void GetKnockedBack(Vector3 direction)
+    {
+        myRb.isKinematic = false;
+        myRb.AddForce(direction, ForceMode.Impulse);
+        StopCoroutine("ResetRigidbody");
+        StartCoroutine("ResetRigidbody");
+    }
+    #endregion
 
-	#endregion
+    #region Private Methods
+    // PRIVATE METHODS //
+    IEnumerator ResetRigidbody()
+    {
+        yield return new WaitForSeconds(0.2f);
+        myRb.isKinematic = true;
+    }
+    #endregion
 }

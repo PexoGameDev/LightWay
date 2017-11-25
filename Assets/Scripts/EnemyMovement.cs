@@ -9,8 +9,9 @@ public class EnemyMovement : MonoBehaviour {
     public bool invert = false;
     [SerializeField] float targetDelay = 0.1f;
 
-    private GameObject player;
-    private NavMeshAgent navMeshAgent;
+    GameObject player;
+    NavMeshAgent navMeshAgent;
+    Rigidbody myRb;
 	// PUBLIC PROPERTIES //
 
 
@@ -23,7 +24,9 @@ public class EnemyMovement : MonoBehaviour {
 	{
         player = FindObjectOfType<PlayerMovement>().gameObject;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        StartCoroutine(TargetPlayer());
+        myRb = GetComponent<Rigidbody>();
+
+        InvokeRepeating("TargetPlayer", 0f, targetDelay);
     }
 	
 	void Update () 
@@ -34,18 +37,26 @@ public class EnemyMovement : MonoBehaviour {
 
     #region Public Methods
     // PUBLIC METHODS //
-
+    public void GetKnockedBack(Vector3 direction)
+    {
+        myRb.isKinematic = false;
+        myRb.AddForce(direction, ForceMode.Impulse);
+        StopCoroutine("ResetRigidbody");
+        StartCoroutine("ResetRigidbody");
+    }
     #endregion
 
     #region Private Methods
     // PRIVATE METHODS //
-    IEnumerator TargetPlayer()
+    void TargetPlayer()
     {
-        for (; ; )
-        {
-            navMeshAgent.SetDestination(player.transform.position*(invert ? -1 : 1));
-            yield return new WaitForSeconds(targetDelay);
-        }
+        navMeshAgent.SetDestination(player.transform.position * (invert ? -1 : 1));
     }
-	#endregion
+
+    IEnumerator ResetRigidbody()
+    {
+        yield return new WaitForSeconds(0.3f);
+        myRb.isKinematic = true;
+    }
+    #endregion
 }

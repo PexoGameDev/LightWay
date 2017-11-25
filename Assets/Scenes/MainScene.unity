@@ -2532,6 +2532,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 195832242374224134, guid: fdbf58a485229d64bb57c42bf8c69571,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54683242050772726, guid: fdbf58a485229d64bb57c42bf8c69571,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fdbf58a485229d64bb57c42bf8c69571, type: 2}
   m_IsPrefabParent: 0
@@ -2765,6 +2775,16 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b5f785bc35f757642ba23ffca7275272, type: 2}
+    - target: {fileID: 54752110201970620, guid: bdcc49fa0ec122944b2af9babf4ba03b,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54752110201970620, guid: bdcc49fa0ec122944b2af9babf4ba03b,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114247688219378420, guid: bdcc49fa0ec122944b2af9babf4ba03b, type: 2}
     - {fileID: 114990477568369758, guid: bdcc49fa0ec122944b2af9babf4ba03b, type: 2}

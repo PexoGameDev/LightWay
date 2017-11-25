@@ -42,7 +42,7 @@ public class PlayerBullet : MonoBehaviour {
         if(other.GetComponent<Enemy>())
         {
             other.GetComponent<Enemy>().HitPoints -= Damage;
-            other.attachedRigidbody.AddForce(DirectionOfShot * KnockbackForce, ForceMode.Impulse);
+            other.GetComponent<EnemyMovement>().GetKnockedBack(DirectionOfShot * KnockbackForce);
         }
 
         Hit();

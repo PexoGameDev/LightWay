@@ -33,12 +33,13 @@ public class GameController : MonoBehaviour {
         Ground = ground;
         PlayerBulletsContainer = playerBulletsContainer;
         ParticlesContainer = particlesContainer;
+        Time.timeScale = 1;
     }
-	#endregion
+    #endregion
 
-	#region Public Methods
-	// PUBLIC METHODS //
-	public static void GameOver()
+    #region Public Methods
+    // PUBLIC METHODS //
+    public static void GameOver()
 	{
 		print("GameOver!");
 	}

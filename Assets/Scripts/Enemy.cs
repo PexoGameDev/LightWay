@@ -3,12 +3,15 @@
 public class Enemy : MonoBehaviour {
 	#region Variables
 	// FIELDS //
-	int scoreValue = 100;
+    public GameObject drop;
 
+    [SerializeField] float knockbackStrength = 12f;
+
+    int scoreValue = 100;
+    float hitPoints = 30;
     // PUBLIC PROPERTIES //
     public float DPS { get; private set; }
-    private float hitPoints = 30;
-    public GameObject drop;
+    public float KnockbackStrength { get; private set; }
 
     public float HitPoints
     {
@@ -37,6 +40,7 @@ public class Enemy : MonoBehaviour {
     #region Unity Methods
     void Start () 
 	{
+        KnockbackStrength = knockbackStrength;
         DPS = 10; //DEBUG
 	}
     #endregion
