@@ -137,6 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRadius: 10
-  damage: 30
+  damage: 1
   explosionParticles: {fileID: 1949953438026030, guid: f380a90c5ef5dd040a8e11babf46cb64,
     type: 2}

@@ -6,8 +6,7 @@ public class EnemyMovement : MonoBehaviour {
 
     #region Variables
     // FIELDS //
-    public bool invert = false;
-    [SerializeField] float targetDelay = 0.1f;
+    public float targetDelay = 0.1f;
 
     GameObject player;
     NavMeshAgent navMeshAgent;
@@ -50,7 +49,7 @@ public class EnemyMovement : MonoBehaviour {
     // PRIVATE METHODS //
     void TargetPlayer()
     {
-        navMeshAgent.SetDestination(player.transform.position * (invert ? -1 : 1));
+        navMeshAgent.SetDestination(player.transform.position);
     }
 
     IEnumerator ResetRigidbody()

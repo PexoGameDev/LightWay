@@ -28,7 +28,17 @@ public class PlayerMovement : MonoBehaviour {
 	void Update() 
 	{
 #if UNITY_EDITOR
-
+    if(Input.GetMouseButtonDown(0))
+    {
+        raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(raycast, out rayHit))
+        {
+            if (rayHit.collider.gameObject == GameController.Ground)
+            {
+                navMeshAgent.SetDestination(rayHit.point);
+            }
+        }
+    }
 #elif UNITY_ANDROID
         for (int i = 0; i < Input.touchCount; i++)
         {

@@ -58,7 +58,5 @@
         "Assets/Scenes":true,
         "Assets/Sounds":true,
         "UnityPackageManager":true,
-        "*.csproj":true,
-        "*.sln":true
     }
 }
