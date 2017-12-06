@@ -5,58 +5,78 @@ using UnityEngine.AI;
 public class EnemyMovementFlee : MonoBehaviour {
 
     public float distanceToTarget = 12f;
-	public float boundsOffset = 1f;
+	public LayerMask playerEnemyMask;
+
+	[Range(1, 5)]
+	public int fovAccuracy = 2;
+	public Vector3 fieldOfView;
 
 	private Transform target;
 	private NavMeshAgent agent;
-	private Vector3 point = Vector3.zero;
-	private Vector3 minPosition;
-    private Vector3 maxPosition;
 	
 	void Start ()
 	{
 		target = GameObject.Find("Player").transform;
 		agent = GetComponent<NavMeshAgent>();
-
-		minPosition = Camera.main.GetComponent<CameraFollow>().minPosition;
-		maxPosition = Camera.main.GetComponent<CameraFollow>().maxPosition;
-
-		minPosition.x += boundsOffset;
-		minPosition.z += boundsOffset;
-		maxPosition.x -= boundsOffset;
-		maxPosition.z -= boundsOffset;
-
 	}
-	
 	void Update ()
 	{
 		if(target)
 		{
-			if(Vector3.Distance(transform.position, target.position) <= distanceToTarget)
+			if(Vector3.Distance(transform.position, target.position) < distanceToTarget || playerInSight())
 			{
-				if(point == Vector3.zero)
-					Flee();
+				Flee();
+				print("Run!");
 			}
-
-			if(agent.velocity == Vector3.zero)
-				point = Vector3.zero;
 		}
 	}
 
 	private void Flee()
 	{
-		point = CalculatePoint();
+		//Look at the opposite to player direction
+		transform.LookAt(transform.position-target.position);
 
-		agent.SetDestination(point);
+		//Get the escape point
+		Vector3 point = transform.position + transform.forward*distanceToTarget;
+
+		//Stores NavMesh query information
+		NavMeshHit hit;
+
+		NavMesh.SamplePosition(point, out hit, distanceToTarget, 1 << NavMesh.GetNavMeshLayerFromName("Walkable"));
+
+		agent.SetDestination(hit.position);
 	}
 
-	private Vector3 CalculatePoint()
+	private bool playerInSight()
 	{
-		Vector3 freePoint = new Vector3(Random.Range(minPosition.x, maxPosition.x), transform.position.y, Random.Range(minPosition.z, maxPosition.z));
+		RaycastHit hitInfo;
 
-		if(Vector3.Distance(freePoint, target.position) <= distanceToTarget)
-			return CalculatePoint();
+		for(int i=0; i<fovAccuracy+1; i++)
+		{
+			if(Physics.Raycast(transform.position, transform.TransformDirection((Vector3.forward+fieldOfView*i)*distanceToTarget), out hitInfo, distanceToTarget, playerEnemyMask))
+			{
+				if(hitInfo.collider.tag == "Player")
+					return true;
+			}
+			
+			#if (UNITY_EDITOR)
+			Debug.DrawRay(transform.position, transform.TransformDirection((Vector3.forward+fieldOfView*i)*distanceToTarget), Color.red);
+			#endif
+		}
+
+		for(int i=1; i<=fovAccuracy; i++)
+		{
+			if(Physics.Raycast(transform.position, transform.TransformDirection((Vector3.forward-fieldOfView*i)*distanceToTarget), out hitInfo, distanceToTarget, playerEnemyMask))
+			{
+				if(hitInfo.collider.tag == "Player")
+					return true;
+			}
+
+			#if (UNITY_EDITOR)
+			Debug.DrawRay(transform.position, transform.TransformDirection((Vector3.forward-fieldOfView*i)*distanceToTarget), Color.red);
+			#endif
+		}
 		
-		return freePoint;
+		return false;
 	}
 }

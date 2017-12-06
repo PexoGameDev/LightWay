@@ -25,8 +25,8 @@ GameObject:
   - component: {fileID: 23267077524213538}
   - component: {fileID: 54752110201970620}
   - component: {fileID: 195273614586431360}
-  - component: {fileID: 114990477568369758}
-  - component: {fileID: 114247688219378420}
+  - component: {fileID: 114943605637667768}
+  - component: {fileID: 114335737284360446}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Untagged
@@ -41,8 +41,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1524664417140356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 16.7, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 44.5, y: 6, z: -3.7764502}
+  m_LocalScale: {x: 5.193397, y: 6.6000156, z: 6.6000185}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: fa8d2dbe2348b3b4bbe77ad7098777fe, type: 2}
+  - {fileID: 2100000, guid: b5f785bc35f757642ba23ffca7275272, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,7 +127,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114247688219378420
+--- !u!114 &114335737284360446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524664417140356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8dcca01a1c55e498f7edb869d6e495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToTarget: 85.21
+  boundsOffset: 1
+--- !u!114 &114943605637667768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -139,20 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drop: {fileID: 0}
-  knockbackStrength: 15
---- !u!114 &114990477568369758
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1524664417140356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3086c5f9e8f7c9d4293ea35379167eef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invert: 0
-  targetDelay: 0.1
+  knockbackStrength: 12
 --- !u!195 &195273614586431360
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -162,7 +162,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 40
+  m_Speed: 80
   m_Acceleration: 40
   avoidancePriority: 50
   m_AngularSpeed: 300
