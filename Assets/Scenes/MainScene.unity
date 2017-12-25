@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e16f0f74eae994e909d3e852971e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponCooldown: 1
+  weaponCooldown: 0.13
   damage: 1
   ammoCount: 99
   particles: {fileID: 0}
