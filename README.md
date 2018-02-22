@@ -1,3 +1,3 @@
 # LightWay
-Mobile survival shooter. Made with Unity.
+Survival shooter for Android. Made with Unity.
 
